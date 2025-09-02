@@ -34,11 +34,64 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('539615872_10232699765728952_446121545416722442_n.jpg');
+            background-image: url('images/539615872_10232699765728952_446121545416722442_n.jpg');
             background-size: cover;
             background-position: center;
             filter: brightness(50%) blur(2px); /* Dims the image and blurs it to make text readable */
             z-index: 0;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+            padding-top: 60px;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content, .modal-caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
         }
     </style>
 </head>
@@ -169,61 +222,61 @@
                 
                 <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4" data-lang="in-action-title">Φίλιππος σε δράση με την KSV Oudenaarde</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="539080568_10232699785809454_1674664986842517985_n.jpg" alt="Filippos playing football with his team." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-6">Ο Φίλιππος σε μια στιγμή δράσης κατά τη διάρκεια ενός αγώνα.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/539080568_10232699785809454_1674664986842517985_n.jpg" alt="Filippos playing football with his team." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-6">Ο Φίλιππος σε μια στιγμή δράσης κατά τη διάρκεια ενός αγώνα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="539397084_10232699788369518_7125329460029725682_n.jpg" alt="Filippos with the ball in a game." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-7">Ο Φίλιππος με την μπάλα σε αγώνα.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/539397084_10232699788369518_7125329460029725682_n.jpg" alt="Filippos with the ball in a game." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-7">Ο Φίλιππος με την μπάλα σε αγώνα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="538543866_10232699801569848_542773601740904141_n.jpg" alt="Filippos running with the ball." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-8">Ο Φίλιππος τρέχει με την μπάλα.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/538543866_10232699801569848_542773601740904141_n.jpg" alt="Filippos running with the ball." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-8">Ο Φίλιππος τρέχει με την μπάλα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="539750824_10232699800969833_1792843076622565685_n.jpg" alt="Filippos dribbling the ball." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-9">Ο Φίλιππος κάνει ντρίμπλα με την μπάλα.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/539750824_10232699800969833_1792843076622565685_n.jpg" alt="Filippos dribbling the ball." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-9">Ο Φίλιππος κάνει ντρίμπλα με την μπάλα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="539615872_10232699765728952_446121545416722442_n.jpg" alt="Filippos shooting the ball." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-10">Ο Φίλιππος σουτάρει την μπάλα.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/539615872_10232699765728952_446121545416722442_n.jpg" alt="Filippos shooting the ball." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-10">Ο Φίλιππος σουτάρει την μπάλα.</p>
                     </div>
                 </div>
 
                 <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4" data-lang="national-team-title">U12 Vlaamse Selectie</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="IMG_20250410_134045.jpg" alt="Filippos with the U12 Vlaamse Selectie team." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-4">Ο Φίλιππος με την ομάδα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/IMG_20250410_134045.jpg" alt="Filippos with the U12 Vlaamse Selectie team." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-4">Ο Φίλιππος με την ομάδα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="photo_2025-05-30_22-52-09.jpg" alt="Filippos wearing the U12 Vlaamse Selectie jersey." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-5">Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Μάιος 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/photo_2025-05-30_22-52-09.jpg" alt="Filippos wearing the U12 Vlaamse Selectie jersey." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-5">Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Μάιος 2025.</p>
                     </div>
                 </div>
                 
                 <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4" data-lang="other-photos-title">Άλλες Φωτογραφίες</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="vale 1.jpg" alt="Filippos with his Top Talent Award from the Valencia Camp on July 18, 2025." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-1">Βραβείο "Κορυφαίο Ταλέντο" στο Valencia Camp, 18 Ιουλίου 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/vale 1.jpg" alt="Filippos with his Top Talent Award from the Valencia Camp on July 18, 2025." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-1">Βραβείο "Κορυφαίο Ταλέντο" στο Valencia Camp, 18 Ιουλίου 2025.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="vale 2.jpg" alt="Filippos with his trophy." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-2">Μια στιγμή χαράς με το βραβείο του.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/vale 2.jpg" alt="Filippos with his trophy." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-2">Μια στιγμή χαράς με το βραβείο του.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="cele.jpg" alt="Filippos and his teammates celebrating." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-3">Πανηγυρίζοντας με την ομάδα.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/cele.jpg" alt="Filippos and his teammates celebrating." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-3">Πανηγυρίζοντας με την ομάδα.</p>
                     </div>
                 </div>
 
                 <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4" data-lang="valencia-camp-title">Valencia Camp</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                        <img src="photo_2025-07-18_15-57-50.jpg" alt="Filippos with his Top Talent Award from the Valencia Camp on July 18, 2025." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-1">Βραβείο "Κορυφαίο Ταλέντο" στο Valencia Camp, 18 Ιουλίου 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="images/photo_2025-07-18_15-57-50.jpg" alt="Filippos with his Top Talent Award from the Valencia Camp on July 18, 2025." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-1">Βραβείο "Κορυφαίο Ταλέντο" στο Valencia Camp, 18 Ιουλίου 2025.</p>
                     </div>
                     <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
                          <div class="relative w-full overflow-hidden rounded-lg shadow-lg" style="padding-top: 158.6%;">
@@ -260,6 +313,13 @@
             <p data-lang="footer-text">© 2024 Filippos Kouretas Portfolio. Με την επιφύλαξη παντός δικαιώματος.</p>
         </div>
     </footer>
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
 
     <script>
         const translations = {
@@ -546,6 +606,40 @@
                     }
                 }
             });
+            
+            // Get the modal
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const captionText = document.getElementById("modalCaption");
+            const images = document.querySelectorAll(".image-container img");
+            const closeModalBtn = document.querySelector(".close");
+
+            // Loop through all image elements and add the click event
+            images.forEach(img => {
+                img.onclick = function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    // Get the caption from the alt attribute or the next sibling p tag
+                    let caption = this.alt;
+                    const nextSibling = this.nextElementSibling;
+                    if (nextSibling && nextSibling.classList.contains('image-caption')) {
+                        caption = nextSibling.textContent;
+                    }
+                    captionText.innerHTML = caption;
+                }
+            });
+
+            // Get the <span> element that closes the modal
+            closeModalBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Also close modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         });
     </script>
 </body>
