@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filippos Kouretas | Football Player</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Hero Section -->
+    <header class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
+            <div class="text-center lg:text-left">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2">Filippos Kouretas</h1>
+                <p class="text-lg sm:text-xl lg:text-2xl font-medium text-gray-300">Football Player | Midfielder</p>
+                <a href="#achievements" class="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300">
+                    See My Highlights
+                </a>
+            </div>
+            <div class="mt-8 lg:mt-0">
+                <img src="https://placehold.co/300x300/e5e7eb/4b5563?text=Filippos" alt="Filippos Kouretas" class="rounded-full border-4 border-white shadow-lg w-48 h-48 sm:w-64 sm:h-64 object-cover">
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- About Section -->
+        <section id="about" class="bg-white rounded-xl shadow-lg p-8 sm:p-10 mb-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-6 text-gray-900">About Me</h2>
+                <p class="text-gray-600 text-base sm:text-lg leading-relaxed text-center">
+                    Hello! My name is Filippos Kouretas. I am a passionate and dedicated football player. I currently play as a midfielder for the KSV Oudenaarde U13 A team. My journey in football has been filled with hard work and memorable moments, and I'm excited to share my progress and achievements with you.
+                </p>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="bg-white rounded-xl shadow-lg p-8 sm:p-10 mb-12">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">Key Achievements</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Achievement 1 -->
+                    <div class="bg-gray-50 rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-yellow-500 mb-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21 20 18.25m-2.25-4.5A2.25 2.25 0 0 0 16.5 9h-6.75a2.25 2.25 0 0 0-2.25 2.25v.75m6.75-7.5L12 4.5m-3.75 6a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 9.75h.008v.008H12V9.75Zm5.25 0h.008v.008H17.25V9.75Z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Valencia CF Best Talent Award</h3>
+                        <p class="text-gray-600">
+                            Won the "Best Talent" award at the Valencia CF camp on July 18, 2025. This was a tremendous honor and a great learning experience.
+                        </p>
+                    </div>
+                    <!-- Achievement 2 -->
+                    <div class="bg-gray-50 rounded-lg p-6 flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-blue-600 mb-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 0 0 8.716-6.747M12 21a9 9 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.5 4.5-10.5S14.485 2.25 12 2.25 7.5 6.75 7.5 12.75 9.515 21 12 21Zm0 0-4.755-3.093a48.783 48.783 0 0 1-1.272-4.045m-2.455-2.035a48.783 48.783 0 0 1 1.272-4.045m-2.455-2.035A9.001 9.001 0 0 1 12 3.75a9.001 9.001 0 0 1 8.716-6.747M12 2.25c2.485 0 4.5 4.5 4.5 10.5S14.485 21 12 21 7.5 16.5 7.5 10.5 9.515 2.25 12 2.25Zm0 0 4.755-3.093a48.783 48.783 0 0 1 1.272-4.045m-2.455-2.035a48.783 48.783 0 0 1 1.272-4.045M12 21c2.485 0 4.5-4.5 4.5-10.5S14.485 2.25 12 2.25 7.5 6.75 7.5 12.75 9.515 21 12 21Z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Team Selections</h3>
+                        <p class="text-gray-600">
+                            Proud to have been selected for the KSV Oudenaarde U13 A team and previously for the U12 Belgium West London team.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="bg-white rounded-xl shadow-lg p-8 sm:p-10 mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-900">Gallery</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Replace these with actual images -->
+                <img src="https://placehold.co/400x400/1e293b/d1d5db?text=Image+1" alt="Filippos playing" class="w-full h-auto rounded-lg shadow-md object-cover">
+                <img src="https://placehold.co/400x400/1e293b/d1d5db?text=Image+2" alt="Filippos with team" class="w-full h-auto rounded-lg shadow-md object-cover">
+                <img src="https://placehold.co/400x400/1e293b/d1d5db?text=Image+3" alt="Filippos with trophy" class="w-full h-auto rounded-lg shadow-md object-cover">
+                <img src="https://placehold.co/400x400/1e293b/d1d5db?text=Image+4" alt="Filippos action shot" class="w-full h-auto rounded-lg shadow-md object-cover">
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-xl shadow-lg p-8 sm:p-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Contact</h2>
+                <p class="text-gray-600 text-base sm:text-lg mb-4">
+                    For inquiries, please feel free to reach out.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="mailto:filippos.kouretas@example.com" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-full transition duration-300">
+                        Email Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm mt-12">
+        <p>
+            &copy; 2025 Filippos Kouretas. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
