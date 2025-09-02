@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="title">Filippos Kouretas | Football Portfolio</title>
+    <!-- Chosen Palette: Warm Neutrals with Green Accent -->
+    <!-- Application Structure Plan: A single-page application (SPA) with a fixed top navigation bar for easy access to different content sections ('About', 'Achievements', 'Media'). The structure is designed for a seamless user flow, starting with a strong hero section for immediate impact, followed by a detailed 'About' section for context, a scannable 'Achievements' section with cards for key milestones, and a 'Media' section for visual evidence. This top-down, narrative structure is ideal for a portfolio, allowing visitors like scouts or coaches to quickly grasp the player's profile and accomplishments without navigating multiple pages. -->
+    <!-- Visualization & Content Choices: 
+        - Info: Filippos's name and tagline. Goal: Inform/Impact. Presentation: Large hero section. Interaction: None. Justification: Creates a strong, memorable first impression. Library/Method: HTML/Tailwind.
+        - Info: Biographical details (age, origin, clubs). Goal: Inform. Presentation: A clear, single-column text block under an "About" section. Interaction: None. Justification: Provides essential background in a highly readable format. Library/Method: HTML/Tailwind.
+        - Info: Key achievements (Vlaamse Selectie, Valencia CF recognition). Goal: Organize/Highlight. Presentation: A responsive grid of cards within the "Achievements" section. Interaction: None. Justification: Cards make key accomplishments easily scannable and digestible, breaking up text effectively. Library/Method: HTML/Tailwind.
+        - Info: Photos and Videos. Goal: Showcase. Presentation: A two-column grid in the "Media" section for a placeholder image and an embedded YouTube video. Interaction: Video playback. Justification: Offers tangible, visual proof of his skills and on-field presence. Library/Method: HTML/Tailwind.
+        - Info: Navigation. Goal: Organize/Navigate. Presentation: Fixed navigation bar. Interaction: Smooth scrolling to sections. Justification: Improves user experience and navigation on a single-page site. Library/Method: JavaScript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4; /* Warm neutral background */
+            color: #44403c; /* Darker neutral for text */
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1200x600/16a34a/000000?text=');
+            background-size: cover;
+            background-position: center;
+        }
+        .accent-color {
+            color: #16a34a; /* Green accent */
+        }
+        .accent-bg {
+            background-color: #16a34a;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e7e5e4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-md shadow-sm py-4 sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-stone-800">F<span class="accent-color">.</span> K<span class="accent-color">.</span></a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-lg font-medium text-stone-600 hover:accent-color transition duration-300" data-key="navAbout">Σχετικά</a>
+                <a href="#achievements" class="nav-link text-lg font-medium text-stone-600 hover:accent-color transition duration-300" data-key="navAchievements">Επιτεύγματα</a>
+                <a href="#media" class="nav-link text-lg font-medium text-stone-600 hover:accent-color transition duration-300" data-key="navMedia">Media</a>
+                <select id="language-switcher" class="bg-stone-100 rounded-lg text-sm px-3 py-1 font-medium text-stone-600">
+                    <option value="el">Ελληνικά</option>
+                    <option value="en">English</option>
+                    <option value="nl">Nederlands</option>
+                </select>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-stone-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 space-y-2">
+            <a href="#about" class="nav-link-mobile block text-lg font-medium text-stone-600 hover:accent-color transition duration-300" data-key="navAbout">Σχετικά</a>
+            <a href="#achievements" class="nav-link-mobile block text-lg font-medium text-stone-600 hover:accent-color transition duration-300" data-key="navAchievements">Επιτεύγματα</a>
+            <a href="#media" class="nav-link-mobile block text-lg font-medium text-stone-600 hover:accent-color transition duration-300" data-key="navMedia">Media</a>
+            <select id="language-switcher-mobile" class="w-full bg-stone-100 rounded-lg text-sm px-3 py-1 font-medium text-stone-600">
+                <option value="el">Ελληνικά</option>
+                <option value="en">English</option>
+                <option value="nl">Nederlands</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white p-6">
+            <div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4" data-key="heroName">Φίλιππος Κουρέτας</h1>
+                <p class="text-xl md:text-2xl font-light" data-key="heroTagline">Ένα ανερχόμενο ταλέντο στο ποδόσφαιρο</p>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6" data-key="aboutTitle">Σχετικά με τον Φίλιππο</h2>
+                 <div class="w-20 h-1 accent-bg mx-auto mb-8 rounded"></div>
+                 <p class="text-lg text-stone-600 leading-relaxed mb-12" data-key="aboutIntro">
+                    Αυτή η ενότητα παρέχει μια επισκόπηση της μέχρι τώρα πορείας του Φίλιππου. Εδώ θα βρείτε πληροφορίες για την καταγωγή του, τα πρώτα του βήματα στο ποδόσφαιρο και τις ομάδες στις οποίες έχει αγωνιστεί, στοιχεία που συνθέτουν το προφίλ ενός αφοσιωμένου νεαρού αθλητή.
+                 </p>
+                 <!-- New structured layout for About section -->
+                 <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div class="card p-6 rounded-lg shadow-md border border-stone-200">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2" data-key="aboutCard1Title">Βασικά Στοιχεία</h3>
+                        <p class="text-stone-600" data-key="aboutCard1Text">Ο Φίλιππος Κουρέτας είναι ένας 12χρονος ποδοσφαιριστής ελληνικής καταγωγής, γεννημένος στο Κόρτρεϊκ του Βελγίου.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg shadow-md border border-stone-200">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2" data-key="aboutCard2Title">Εξέλιξη</h3>
+                        <p class="text-stone-600" data-key="aboutCard2Text">Ξεκίνησε την πορεία του στην KWS Desselgem σε ηλικία 5 ετών, συνέχισε για έξι χρόνια στη Racing Waregem και τώρα αγωνίζεται στην KSV Oudenaarde U13.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg shadow-md border border-stone-200">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2" data-key="aboutCard3Title">Θέση</h3>
+                        <p class="text-stone-600" data-key="aboutCard3Text">Η ικανότητά του να αγωνίζεται ως δεξιός εξτρέμ, αλλά και ως επιθετικός ή πλέι μέικερ, τον καθιστά έναν πολύτιμο και ευέλικτο παίκτη.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg shadow-md border border-stone-200">
+                        <h3 class="text-xl font-bold text-stone-800 mb-2" data-key="aboutCard4Title">Δοκιμαστικά στη Βαλένθια</h3>
+                        <p class="text-stone-600" data-key="aboutCard4Text">Το ταλέντο του οδήγησε σε μια μεγάλη ευκαιρία για δοκιμαστικά στην Ισπανία, με τους προπονητές της Valencia CF, όπου τον ξεχώρισαν ως ένα από τα κορυφαία ταλέντα.</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6" data-key="achievementsTitle">Κύρια Επιτεύγματα</h2>
+                    <div class="w-20 h-1 accent-bg mx-auto mb-8 rounded"></div>
+                    <p class="text-lg text-stone-600 leading-relaxed mb-12" data-key="achievementsIntro">
+                       Εδώ παρουσιάζονται οι πιο σημαντικές στιγμές στην καριέρα του Φίλιππου μέχρι σήμερα. Κάθε κάρτα αναδεικνύει μια ξεχωριστή επιτυχία, από τις τοπικές διακρίσεις μέχρι τη διεθνή αναγνώριση, προσφέροντας μια γρήγορη ματιά στα ορόσημα που έχει κατακτήσει.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-8 rounded-lg text-center">
+                        <h3 class="text-xl font-bold text-stone-800 mb-3" data-key="achievement1Title">U12 Vlaamse Selectie</h3>
+                        <p class="text-stone-600" data-key="achievement1Text">Επιλέχθηκε στην τελική ομάδα της Δυτικής Φλάνδρας ανάμεσα σε περισσότερους από 2.000 νεαρούς παίκτες, φορώντας το εθνόσημο του Βελγίου.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg text-center">
+                        <h3 class="text-xl font-bold text-stone-800 mb-3" data-key="achievement2Title">Αναγνώριση από τη Valencia CF</h3>
+                        <p class="text-stone-600" data-key="achievement2Text">Ο Ισπανός προπονητής Ignacio Pardo τον ξεχώρισε ως ένα από τα κορυφαία ταλέντα σε καμπ της Valencia CF. Αυτή η επιλογή του δίνει την ευκαιρία να προπονηθεί και να αξιολογηθεί από τους προπονητές της Βαλένθια.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg text-center">
+                        <h3 class="text-xl font-bold text-stone-800 mb-3" data-key="achievement3Title">Στόχος το Παγκόσμιο Κύπελλο</h3>
+                        <p class="text-stone-600" data-key="achievement3Text">Ο απώτερος στόχος της συμμετοχής του στα δοκιμαστικά της Βαλένθια είναι η διεκδίκηση μιας θέσης στην ομάδα που θα αγωνιστεί στο Παγκόσμιο Κύπελλο που θα διεξαχθεί το επόμενο καλοκαίρι.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="media" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-6" data-key="mediaTitle">Φωτογραφίες & Βίντεο</h2>
+                    <div class="w-20 h-1 accent-bg mx-auto mb-8 rounded"></div>
+                    <p class="text-lg text-stone-600 leading-relaxed mb-12" data-key="mediaIntro">
+                       Σε αυτή την ενότητα μπορείτε να δείτε οπτικό υλικό από την πορεία του Φίλιππου. Οι φωτογραφίες και τα βίντεο προσφέρουν μια ζωντανή ματιά στις ικανότητές του και τις σημαντικές στιγμές του στο γήπεδο, επιτρέποντάς σας να αλληλεπιδράσετε άμεσα με το περιεχόμενο.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="https://placehold.co/600x400/e7e5e4/44403c?text=Filippos+in+Action" alt="Ο Φίλιππος σε δράση" class="rounded-lg shadow-lg w-full h-auto">
+                    </div>
+                    <div class="relative h-0 pb-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-stone-800 text-white text-center py-8">
+        <p data-key="footerText">&copy; 2025 Filippos Kouretas. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
+            const langSelect = document.getElementById('language-switcher');
+            const langSelectMobile = document.getElementById('language-switcher-mobile');
+            const elementsToTranslate = document.querySelectorAll('[data-key]');
+            
+            const translations = {
+                en: {
+                    title: "Filippos Kouretas | Football Portfolio",
+                    navAbout: "About",
+                    navAchievements: "Achievements",
+                    navMedia: "Media",
+                    heroName: "Filippos Kouretas",
+                    heroTagline: "An aspiring football talent",
+                    aboutTitle: "About Filippos",
+                    aboutIntro: "This section provides an overview of Filippos's journey so far. Here you will find information about his origin, his first steps in football, and the teams he has played for, all of which form the profile of a dedicated young athlete.",
+                    aboutCard1Title: "Key Information",
+                    aboutCard1Text: "Filippos Kouretas is a 12-year-old footballer of Greek descent, born in Kortrijk, Belgium.",
+                    aboutCard2Title: "Development",
+                    aboutCard2Text: "He started his career at KWS Desselgem at age 5, continued for six years at Racing Waregem, and now plays for KSV Oudenaarde U13.",
+                    aboutCard3Title: "Position",
+                    aboutCard3Text: "His ability to play as a right winger, but also as a forward or playmaker, makes him a valuable and versatile player.",
+                    aboutCard4Title: "Valencia Trials",
+                    aboutCard4Text: "His talent led to a major opportunity for trials in Spain with coaches from Valencia CF, where they singled him out as one of the top talents.",
+                    achievementsTitle: "Key Achievements",
+                    achievementsIntro: "Here you'll find the most important moments in Filippos's career to date. Each card highlights a separate success, from local distinctions to international recognition, offering a quick glimpse into the milestones he has conquered.",
+                    achievement1Title: "U12 Vlaamse Selectie",
+                    achievement1Text: "Selected for the final squad of the West Flanders team among more than 2,000 young players, proudly wearing Belgium’s national emblem.",
+                    achievement2Title: "Valencia CF Recognition",
+                    achievement2Text: "The Spanish coach Ignacio Pardo singled him out as one of the top talents at a Valencia CF camp. This selection gives him the opportunity to train and be evaluated by Valencia's coaches.",
+                    achievement3Title: "World Cup Goal",
+                    achievement3Text: "The ultimate goal of his participation in the Valencia trials is to secure a spot on the team that will compete in the World Cup to be held next summer.",
+                    mediaTitle: "Photos & Videos",
+                    mediaIntro: "In this section, you can see visual material from Filippos's journey. The photos and videos offer a lively look at his abilities and important moments on the field, allowing you to interact directly with the content.",
+                    footerText: "&copy; 2025 Filippos Kouretas. All rights reserved."
+                },
+                nl: {
+                    title: "Filippos Kouretas | Voetbal Portfolio",
+                    navAbout: "Over",
+                    navAchievements: "Prestaties",
+                    navMedia: "Media",
+                    heroName: "Filippos Kouretas",
+                    heroTagline: "Een opkomend voetbaltalent",
+                    aboutTitle: "Over Filippos",
+                    aboutIntro: "Dit gedeelte geeft een overzicht van de carrière van Filippos tot nu toe. Hier vindt u informatie over zijn afkomst, zijn eerste stappen in het voetbal en de teams waarvoor hij heeft gespeeld, die samen het profiel van een toegewijde jonge atleet vormen.",
+                    aboutCard1Title: "Kerninformatie",
+                    aboutCard1Text: "Filippos Kouretas is een 12-jarige voetballer van Griekse afkomst, geboren in Kortrijk, België.",
+                    aboutCard2Title: "Ontwikkeling",
+                    aboutCard2Text: "Hij begon zijn carrière bij KWS Desselgem op 5-jarige leeftijd, speelde zes jaar bij Racing Waregem en speelt nu voor KSV Oudenaarde U13.",
+                    aboutCard3Title: "Positie",
+                    aboutCard3Text: "Zijn vermogen om te spelen als rechtervleugelspeler, maar ook als aanvaller of spelmaker, maakt hem een waardevolle en veelzijdige speler.",
+                    aboutCard4Title: "Valencia Proeftrainingen",
+                    aboutCard4Text: "Zijn talent leidde tot een grote kans voor proeftrainingen in Spanje met coaches van Valencia CF, waar ze hem aanwezen als een van de toptalenten.",
+                    achievementsTitle: "Belangrijkste Prestaties",
+                    achievementsIntro: "Hier vindt u de belangrijkste momenten in de carrière van Filippos tot nu toe. Elke kaart belicht een afzonderlijk succes, van lokale onderscheidingen tot internationale erkenning, en biedt een snelle blik op de mijlpalen die hij heeft bereikt.",
+                    achievement1Title: "U12 Vlaamse Selectie",
+                    achievement1Text: "Geselecteerd voor de definitieve selectie van de West-Vlaamse ploeg uit meer dan 2.000 jonge spelers, trots dragend het Belgische nationale embleem.",
+                    achievement2Title: "Valencia CF Erkenning",
+                    achievement2Text: "De Spaanse coach Ignacio Pardo wees hem aan als een van de toptalenten op een Valencia CF-kamp. Deze selectie geeft hem de mogelijkheid om te trainen en te worden geëvalueerd door de coaches van Valencia.",
+                    achievement3Title: "Wereldbeker Doel",
+                    achievement3Text: "Het uiteindelijke doel van zijn deelname aan de Valencia-proeftrainingen is het bemachtigen van een plek in het team dat zal strijden op de Wereldbeker die volgende zomer wordt gehouden.",
+                    mediaTitle: "Foto's & Video's",
+                    mediaIntro: "In dit gedeelte kunt u visueel materiaal van de reis van Filippos bekijken. De foto's en video's bieden een levendige blik op zijn vaardigheden en belangrijke momenten op het veld, waardoor u direct met de inhoud kunt communiceren.",
+                    footerText: "&copy; 2025 Filippos Kouretas. Alle rechten voorbehouden."
+                },
+                el: {
+                    title: "Filippos Kouretas | Football Portfolio",
+                    navAbout: "Σχετικά",
+                    navAchievements: "Επιτεύγματα",
+                    navMedia: "Media",
+                    heroName: "Φίλιππος Κουρέτας",
+                    heroTagline: "Ένα ανερχόμενο ταλέντο στο ποδόσφαιρο",
+                    aboutTitle: "Σχετικά με τον Φίλιππο",
+                    aboutIntro: "Αυτή η ενότητα παρέχει μια επισκόπηση της μέχρι τώρα πορείας του Φίλιππου. Εδώ θα βρείτε πληροφορίες για την καταγωγή του, τα πρώτα του βήματα στο ποδόσφαιρο και τις ομάδες στις οποίες έχει αγωνιστεί, στοιχεία που συνθέτουν το προφίλ ενός αφοσιωμένου νεαρού αθλητή.",
+                    aboutCard1Title: "Βασικά Στοιχεία",
+                    aboutCard1Text: "Ο Φίλιππος Κουρέτας είναι ένας 12χρονος ποδοσφαιριστής ελληνικής καταγωγής, γεννημένος στο Κόρτρεϊκ του Βελγίου.",
+                    aboutCard2Title: "Εξέλιξη",
+                    aboutCard2Text: "Ξεκίνησε την πορεία του στην KWS Desselgem σε ηλικία 5 ετών, συνέχισε για έξι χρόνια στη Racing Waregem και τώρα αγωνίζεται στην KSV Oudenaarde U13.",
+                    aboutCard3Title: "Θέση",
+                    aboutCard3Text: "Η ικανότητά του να αγωνίζεται ως δεξιός εξτρέμ, αλλά και ως επιθετικός ή πλέι μέικερ, τον καθιστά έναν πολύτιμο και ευέλικτο παίκτη.",
+                    aboutCard4Title: "Δοκιμαστικά στη Βαλένθια",
+                    aboutCard4Text: "Το ταλέντο του οδήγησε σε μια μεγάλη ευκαιρία για δοκιμαστικά στην Ισπανία, με τους προπονητές της Valencia CF, όπου τον ξεχώρισαν ως ένα από τα κορυφαία ταλέντα.",
+                    achievementsTitle: "Κύρια Επιτεύγματα",
+                    achievementsIntro: "Εδώ παρουσιάζονται οι πιο σημαντικές στιγμές στην καριέρα του Φίλιππου μέχρι σήμερα. Κάθε κάρτα αναδεικνύει μια ξεχωριστή επιτυχία, από τις τοπικές διακρίσεις μέχρι τη διεθνή αναγνώριση, προσφέροντας μια γρήγορη ματιά στα ορόσημα που έχει κατακτήσει.",
+                    achievement1Title: "U12 Vlaamse Selectie",
+                    achievement1Text: "Επιλέχθηκε στην τελική ομάδα της Δυτικής Φλάνδρας ανάμεσα σε περισσότερους από 2.000 νεαρούς παίκτες, φορώντας το εθνόσημο του Βελγίου.",
+                    achievement2Title: "Αναγνώριση από τη Valencia CF",
+                    achievement2Text: "Ο Ισπανός προπονητής Ignacio Pardo τον ξεχώρισε ως ένα από τα κορυφαία ταλέντα σε καμπ της Valencia CF. Αυτή η επιλογή του δίνει την ευκαιρία να προπονηθεί και να αξιολογηθεί από τους προπονητές της Βαλένθια.",
+                    achievement3Title: "Στόχος το Παγκόσμιο Κύπελλο",
+                    achievement3Text: "Ο απώτερος στόχος της συμμετοχής του στα δοκιμαστικά της Βαλένθια είναι η διεκδίκηση μιας θέσης στην ομάδα που θα αγωνιστεί στο Παγκόσμιο Κύπελλο που θα διεξαχθεί το επόμενο καλοκαίρι.",
+                    mediaTitle: "Φωτογραφίες & Βίντεο",
+                    mediaIntro: "Σε αυτή την ενότητα μπορείτε να δείτε οπτικό υλικό από την πορεία του Φίλιππου. Οι φωτογραφίες και τα βίντεο προσφέρουν μια ζωντανή ματιά στις ικανότητές του και τις σημαντικές στιγμές του στο γήπεδο, επιτρέποντάς σας να αλληλεπιδράσετε άμεσα με το περιεχόμενο.",
+                    footerText: "&copy; 2025 Filippos Kouretas. All rights reserved."
+                }
+            };
+
+            function updateLanguage(lang) {
+                elementsToTranslate.forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+            }
+
+            const initialLang = 'el';
+            langSelect.value = initialLang;
+            langSelectMobile.value = initialLang;
+            updateLanguage(initialLang);
+
+            langSelect.addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+            langSelectMobile.addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.hash !== "") {
+                        e.preventDefault();
+                        const hash = this.hash;
+                        const targetElement = document.querySelector(hash);
+                        if(targetElement) {
+                           targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                           });
+                        }
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                           mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            let lastScrollTop = 0;
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.style.top = '-100px';
+                } else {
+                    header.style.top = '0';
+                }
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>
