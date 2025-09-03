@@ -1,13 +1,3 @@
-<!-- Chosen Palette: Warm Neutrals & Subtle Green Accents -->
-<!-- Application Structure Plan: The application is a single-page, multi-language interactive portfolio. The structure is based on a vertical, scrolling-based layout with thematic sections: a hero section with a brief introduction, an 'About Me' section broken into interactive cards, a 'Stats & Skills' section with dynamic charts, and a 'Photos & Videos' section. This structure was chosen to provide a guided narrative flow, allowing the user to progressively explore Filippos's profile. Navigation is provided via a fixed header for easy jumping between sections. -->
-<!-- Visualization & Content Choices: 
-- Hero Section -> Goal: Introduce the subject -> Presentation: Large, impactful text and a profile image.
-- About Me -> Goal: Provide key background info -> Presentation: Thematic cards with a simple flip or hover effect for a touch of interactivity.
-- Stats & Skills -> Goal: Quantify abilities and show trends -> Presentation: Bar chart for skill comparison, line chart for performance trend. -> Interaction: Tooltips on hover to reveal data. This helps the user understand Filippos's strengths quickly. -> Justification: Chart.js is used for its simplicity, responsiveness, and canvas-based rendering, avoiding SVG issues. The static data is stored in a JS object to be easily updated by the code.
-- Photos & Videos -> Goal: Provide visual evidence -> Presentation: A grid layout of images and a responsive video embed. -> Interaction: Simple display, a click on a video launches it. -> Justification: The use of responsive containers ensures media looks good on all devices without manual resizing.
-- Language Selector -> Goal: Offer multilingual access -> Presentation: Dropdown in the navigation bar. -> Interaction: On-click updates all text on the page from a JavaScript object. This avoids page reloads and provides a seamless user experience.
-- Mobile Layout -> Goal: Ensure usability on small screens -> Presentation: Stacked, single-column layout for all sections. -> Interaction: Collapsible navigation menu. -> Justification: Tailwind's mobile-first approach is used extensively to adapt the layout, font sizes, and spacing for optimal mobile consumption, preventing horizontal scrolling. -->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -252,7 +242,7 @@
                     </div>
                     <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
                         <img src="beshirt.jpg" alt="Filippos wearing the U12 Vlaamse Selectie jersey." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-5">Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Μάιος 2025.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-5">Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
                     </div>
                 </div>
                 
@@ -314,7 +304,6 @@
         </div>
     </footer>
 
-    <!-- The Modal -->
     <div id="imageModal" class="modal">
       <span class="close">&times;</span>
       <img class="modal-content" id="modalImage">
@@ -348,7 +337,7 @@
                 'photo-caption-2': 'Μια στιγμή χαράς με το βραβείο του.',
                 'photo-caption-3': 'Πανηγυρίζοντας με την ομάδα.',
                 'photo-caption-4': 'Ο Φίλιππος με την ομάδα της U12 Vlaamse Selectie, Απρίλιος 2025.',
-                'photo-caption-5': 'Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Μάιος 2025.',
+                'photo-caption-5': 'Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Απρίλιος 2025.',
                 'photo-caption-6': 'Ο Φίλιππος σε μια στιγμή δράσης κατά τη διάρκεια ενός αγώνα.',
                 'photo-caption-7': 'Ο Φίλιππος με την μπάλα σε αγώνα.',
                 'photo-caption-8': 'Ο Φίλιππος τρέχει με την μπάλα.',
@@ -384,7 +373,7 @@
                 'photo-caption-2': 'A happy moment with his award.',
                 'photo-caption-3': 'Celebrating with the team.',
                 'photo-caption-4': 'Filippos with the U12 Vlaamse Selectie team, April 2025.',
-                'photo-caption-5': 'Filippos wearing the U12 Vlaamse Selectie jersey, May 2025.',
+                'photo-caption-5': 'Filippos wearing the U12 Vlaamse Selectie jersey, April 2025.',
                 'photo-caption-6': 'Filippos in action during a match.',
                 'photo-caption-7': 'Filippos with the ball in a game.',
                 'photo-caption-8': 'Filippos running with the ball.',
@@ -420,7 +409,7 @@
                 'photo-caption-2': 'Een blij moment met zijn prijs.',
                 'photo-caption-3': 'Vieren met het team.',
                 'photo-caption-4': 'Filippos met het U12 Vlaamse Selectie-team, april 2025.',
-                'photo-caption-5': 'Filippos in het U12 Vlaamse Selectie-shirt, mei 2025.',
+                'photo-caption-5': 'Filippos in het U12 Vlaamse Selectie-shirt, april 2025.',
                 'photo-caption-6': 'Filippos in actie tijdens een wedstrijd.',
                 'photo-caption-7': 'Filippos met de bal in een wedstrijd.',
                 'photo-caption-8': 'Filippos rent met de bal.',
