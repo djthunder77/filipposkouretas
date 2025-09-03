@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filippos Kouretas | Football Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .chart-container {
             position: relative;
@@ -232,7 +232,7 @@
                         <img src="sout.jpg" alt="Filippos shooting the ball." class="w-full h-auto rounded-lg mb-4">
                         <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-10">Ο Φίλιππος σουτάρει την μπάλα.</p>
                     </div>
-                     <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
                         <img src="cele.jpg" alt="Filippos and his teammates celebrating." class="w-full h-auto rounded-lg mb-4">
                         <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-3">Πανηγυρίζοντας με την ομάδα.</p>
                     </div>
@@ -262,20 +262,18 @@
                     </div>
                 </div>
 
-                <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4" data-lang="valencia-camp-title">Valencia Camp</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4" data-lang="valencia-camp-title">Valencia Camp 2025</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
-                        <img src="vale 1.jpg" alt="Filippos with his Top Talent Award from the Valencia Camp on July 18, 2025." class="w-full h-auto rounded-lg mb-4">
-                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-1">Βραβείο "Κορυφαίο Ταλέντο" στο Valencia Camp, 18 Ιουλίου 2025.</p>
+                        <img src="vale 2.jpg" alt="Filippos with his trophy." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-2">Μια στιγμή χαράς με το βραβείο του.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
-                         <div class="relative w-full overflow-hidden rounded-lg shadow-lg" style="padding-top: 158.6%;">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fvalenciavoetbalkampbenelux%2Fposts%2F726358303653365&show_text=true&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                        </div>
-                        <p class="text-sm text-gray-500 mt-2" data-lang="facebook-title">Ανάρτηση στο Facebook</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="vale 3.jpg" alt="Filippos with his Top Talent Award from the Valencia Camp on July 18, 2025." class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-1">Αναμνηστικη φωτογραφια στο Valencia Camp, 18 Ιουλίου 2025.</p>
                     </div>
                 </div>
-            </div
+            </div>
             
             <div class="mt-8">
                 <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang="video-title">Highlights Βίντεο</h3>
@@ -345,7 +343,7 @@
                 'photo-caption-10': 'Ο Φίλιππος σουτάρει την μπάλα.',
                 'video-title': 'Highlights Βίντεο',
                 'facebook-title': 'Ανάρτηση στο Facebook',
-                'valencia-camp-title': 'Valencia Camp',
+                'valencia-camp-title': 'Valencia Camp 2025',
                 'footer-text': '© 2024 Filippos Kouretas Portfolio. Με την επιφύλαξη παντός δικαιώματος.'
             },
             'en': {
@@ -381,7 +379,7 @@
                 'photo-caption-10': 'Filippos shooting the ball.',
                 'video-title': 'Highlights Video',
                 'facebook-title': 'Facebook Post',
-                'valencia-camp-title': 'Valencia Camp',
+                'valencia-camp-title': 'Valencia Camp 2025',
                 'footer-text': '© 2024 Filippos Kouretas Portfolio. All Rights Reserved.'
             },
             'nl': {
@@ -417,7 +415,7 @@
                 'photo-caption-10': 'Filippos schiet de bal.',
                 'video-title': 'Highlights Video',
                 'facebook-title': 'Facebook Bericht',
-                'valencia-camp-title': 'Valencia Camp',
+                'valencia-camp-title': 'Valencia Camp 2025',
                 'footer-text': '© 2024 Filippos Kouretas Portfolio. Alle rechten voorbehouden.'
             }
         };
@@ -447,3 +445,189 @@
                 localStorage.setItem('lang', newLang);
                 document.documentElement.lang = newLang;
                 updateContent(newLang);
+            }
+
+            languageSelector.addEventListener('change', handleLanguageChange);
+            mobileLanguageSelector.addEventListener('change', handleLanguageChange);
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#mobile-menu a').forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Sticky nav bar on scroll
+            let lastScrollTop = 0;
+            const navbar = document.getElementById('navbar');
+            window.addEventListener("scroll", () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.add("-translate-y-full");
+                } else {
+                    navbar.classList.remove("-translate-y-full");
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            const skillsData = {
+                labels: ['Right Wing', 'Forward', 'Playmaker', 'Speed', 'Agility'],
+                datasets: [{
+                    label: 'Score out of 10',
+                    data: [9, 8, 7, 9.5, 9],
+                    backgroundColor: [
+                        'rgba(14, 165, 255, 0.7)',
+                        'rgba(34, 197, 94, 0.7)',
+                        'rgba(251, 191, 36, 0.7)',
+                        'rgba(249, 115, 22, 0.7)',
+                        'rgba(244, 63, 94, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(14, 165, 255, 1)',
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(251, 191, 36, 1)',
+                        'rgba(249, 115, 22, 1)',
+                        'rgba(244, 63, 94, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const performanceData = {
+                labels: ['U7', 'U8', 'U9', 'U10', 'U11', 'U12', 'U13'],
+                datasets: [{
+                    label: 'Goals Scored',
+                    data: [15, 22, 28, 35, 42, 50, 60],
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            };
+            
+            function wrapLabels(labels, maxChars = 16) {
+                return labels.map(label => {
+                    if (label.length <= maxChars) return label;
+                    let wrapped = [];
+                    const words = label.split(' ');
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length <= maxChars) {
+                            currentLine += (currentLine.length > 0 ? ' ' : '') + word;
+                        } else {
+                            if (currentLine.length > 0) wrapped.push(currentLine);
+                            currentLine = word;
+                        }
+                    });
+                    wrapped.push(currentLine);
+                    return wrapped;
+                });
+            }
+
+            const skillsChartCanvas = document.getElementById('skillsChart').getContext('2d');
+            const skillsChart = new Chart(skillsChartCanvas, {
+                type: 'bar',
+                data: skillsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: (tooltipItems) => {
+                                    return tooltipItems[0].label.replace(/,/g, ' ');
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const performanceChartCanvas = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(performanceChartCanvas, {
+                type: 'line',
+                data: performanceData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: (tooltipItems) => {
+                                    return tooltipItems[0].label.replace(/,/g, ' ');
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Get the modal
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const captionText = document.getElementById("modalCaption");
+            const images = document.querySelectorAll(".image-container img");
+            const closeModalBtn = document.querySelector(".close");
+
+            // Loop through all image elements and add the click event
+            images.forEach(img => {
+                img.onclick = function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    // Get the caption from the alt attribute or the next sibling p tag
+                    let caption = this.alt;
+                    const nextSibling = this.nextElementSibling;
+                    if (nextSibling && nextSibling.classList.contains('image-caption')) {
+                        caption = nextSibling.textContent;
+                    }
+                    captionText.innerHTML = caption;
+                }
+            });
+
+            // Get the <span> element that closes the modal
+            closeModalBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Also close modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
