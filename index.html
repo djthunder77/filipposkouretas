@@ -8,23 +8,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        .chart-container { position: relative; width: 100%; height: 350px; max-height: 400px; }
-        .hero-section { position: relative; overflow: hidden; }
-        .hero-section::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('sout.jpg'); background-size: cover; background-position: center;
-            filter: brightness(50%) blur(2px); z-index: 0;
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            max-height: 400px;
         }
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); padding-top: 60px; }
-        .modal-content { margin: auto; display: block; width: 80%; max-width: 700px; animation: zoom 0.6s; }
-        @keyframes zoom { from {transform: scale(0)} to {transform: scale(1)} }
-        .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
-        .modal-caption { margin: auto; display: block; width: 80%; text-align: center; color: #ccc; padding: 10px 0; }
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('sout.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(50%) blur(2px);
+            z-index: 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            padding-top: 60px;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content, .modal-caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <nav class="bg-white shadow-md fixed w-full top-0 z-50 transition-transform duration-300" id="navbar">
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50 transition-transform duration-300 transform translate-y-0" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -36,60 +93,56 @@
                     <a href="#about" class="text-gray-600 hover:text-gray-900">Σχετικά</a>
                     <a href="#stats" class="text-gray-600 hover:text-gray-900">Στατιστικά</a>
                     <a href="#photos-videos" class="text-gray-600 hover:text-gray-900">Media</a>
-                    <select id="language-selector" class="border rounded px-2 py-1">
-                        <option value="el">Ελληνικά</option>
-                        <option value="en">English</option>
-                        <option value="nl">Nederlands</option>
-                    </select>
+                    <div class="relative">
+                        <select id="language-selector" class="block w-full px-3 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm">
+                            <option value="el">Ελληνικά</option>
+                            <option value="en">English</option>
+                            <option value="nl">Nederlands</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-500">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                <div class="-mr-2 flex md:hidden items-center">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="md:hidden hidden bg-white" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block px-3 py-2 text-gray-600">Σχετικά</a>
-                <a href="#stats" class="block px-3 py-2 text-gray-600">Στατιστικά</a>
-                <a href="#photos-videos" class="block px-3 py-2 text-gray-600">Media</a>
-            </div>
-        </div>
     </nav>
-
     <div class="h-16"></div>
 
     <main class="py-12">
-        <section class="hero-section py-20">
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4" data-lang="hero-title">Φίλιππος Κουρέτας</h1>
-                <p class="text-xl text-gray-200" data-lang="hero-subtitle">Ταλέντο στο Βέλγικο Ποδόσφαιρο</p>
+        <section id="hero" class="relative overflow-hidden pt-12 hero-section">
+            <div class="container mx-auto px-6 py-12 text-center relative z-10">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white mb-4" data-lang="hero-title">Φίλιππος Κουρέτας</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8" data-lang="hero-subtitle">Ταλέντο στο Βέλγικο Ποδόσφαιρο</p>
             </div>
         </section>
 
         <section id="about" class="py-16 bg-gray-100">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12" data-lang="about-heading">Σχετικά με τον Φίλιππο</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" data-lang="about-heading">Σχετικά με τον Φίλιππο</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
                         <div class="text-5xl mb-4">⚽</div>
-                        <h3 class="font-bold text-xl mb-2" data-lang="about-card-1-title">Το Ταξίδι</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="about-card-1-title">Το Ταξίδι</h3>
                         <p class="text-gray-600" data-lang="about-card-1-text">Ο Φίλιππος ξεκίνησε 5 ετών στην KWS Desselgem.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
                         <div class="text-5xl mb-4">👕</div>
-                        <h3 class="font-bold text-xl mb-2" data-lang="about-card-2-title">KSV Oudenaarde</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="about-card-2-title">KSV Oudenaarde</h3>
                         <p class="text-gray-600" data-lang="about-card-2-text">Μεταγραφή στην KSV Oudenaarde U13 A.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center border-t-4 border-yellow-500">
                         <div class="text-5xl mb-4">🏆</div>
-                        <h3 class="font-bold text-xl mb-2" data-lang="about-card-3-title">Valencia Award</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="about-card-3-title">Valencia Award</h3>
                         <p class="text-gray-600" data-lang="about-card-3-text">Best Talent στο Valencia CF Camp (18/07/2025).</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center border-t-4 border-blue-500">
                         <div class="text-5xl mb-4">🇧🇪</div>
-                        <h3 class="font-bold text-xl mb-2" data-lang="about-card-4-title">PJO West Flanders</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="about-card-4-title">PJO West Flanders</h3>
                         <p class="text-gray-600" data-lang="about-card-4-text">Επιλογή στην U12 PJO ανάμεσα σε 2.000 παιδιά.</p>
                     </div>
                 </div>
@@ -98,15 +151,17 @@
 
         <section id="stats" class="py-16">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12" data-lang="stats-heading">Στατιστικά & Δεξιότητες</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="font-bold text-xl mb-4" data-lang="skills-chart-title">Θέσεις & Δεξιότητες</h3>
-                        <div class="chart-container"><canvas id="skillsChart"></canvas></div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" data-lang="stats-heading">Στατιστικά & Δεξιότητες</h2>
+                <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+                    <div class="w-full lg:w-1/2 bg-white p-6 rounded-xl shadow-lg flex flex-col h-full">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800" data-lang="skills-chart-title">Θέσεις & Δεξιότητες</h3>
+                        <p class="text-gray-600 mb-4" data-lang="skills-chart-text">Ο Φίλιππος διαπρέπει σε πολλές θέσεις, με κύρια την επίθεση.</p>
+                        <div class="chart-container flex-grow"><canvas id="skillsChart"></canvas></div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="font-bold text-xl mb-4" data-lang="performance-chart-title">Εξέλιξη Απόδοσης</h3>
-                        <div class="chart-container"><canvas id="performanceChart"></canvas></div>
+                    <div class="w-full lg:w-1/2 bg-white p-6 rounded-xl shadow-lg flex flex-col h-full">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800" data-lang="performance-chart-title">Εξέλιξη Απόδοσης</h3>
+                        <p class="text-gray-600 mb-4" data-lang="performance-chart-text">Η απόδοσή του δείχνει σταθερή ανοδική πορεία.</p>
+                        <div class="chart-container flex-grow"><canvas id="performanceChart"></canvas></div>
                     </div>
                 </div>
             </div>
@@ -114,111 +169,115 @@
 
         <section id="photos-videos" class="py-16 bg-gray-100">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12" data-lang="media-heading">Φωτογραφίες & Βίντεο</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" data-lang="media-heading">Φωτογραφίες & Βίντεο</h2>
                 
-                <h3 class="flex items-center text-2xl font-semibold mb-6">
-                    <img src="beflag.png" class="h-8 mr-2"> <span data-lang="national-team-title">U12 Vlaamse Selectie 2025</span>
+                <h3 class="flex items-center text-2xl font-semibold text-gray-800 mt-8 mb-4">
+                    <img src="beflag.png" alt="Belgium Flag" class="h-8 w-auto mr-2">
+                    <span data-lang="national-team-title">U12 Vlaamse Selectie 2025</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
-                        <img src="beteam.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-4">Ο Φίλιππος με την ομάδα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="beteam.jpg" class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-4">Ο Φίλιππος με την ομάδα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
-                        <img src="beshirt.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-5">Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="beshirt.jpg" class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-5">Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Απρίλιος 2025.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
-                        <img src="beaction.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-12">Ο Φίλιππος σε δράση με τη φανέλα της U12 Vlaamse Selectie.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="beaction.jpg" class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-12">Ο Φίλιππος σε δράση με τη φανέλα της U12 Vlaamse Selectie.</p>
                     </div>
                 </div>
 
-                <h3 class="flex items-center text-2xl font-semibold mb-6">
-                    <span data-lang="valencia-camp-title">Valencia CF Camp 2025</span> <img src="Valenciacf.svg.png" class="h-8 ml-2">
+                <h3 class="flex items-center text-2xl font-semibold text-gray-800 mt-8 mb-4">
+                    <span data-lang="valencia-camp-title">Valencia CF Camp 2025</span>
+                    <img src="Valenciacf.svg.png" alt="Valencia CF Logo" class="h-8 w-auto ml-2">
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
-                        <img src="vale 1.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-11">Ο Φίλιππος με το βραβείο του από το Valencia Camp.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="vale 1.jpg" class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-11">Ο Φίλιππος με το βραβείο του από το Valencia Camp.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
-                        <img src="vale 2.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-2">Μια στιγμή χαράς με το βραβείο του.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="vale 2.jpg" class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-2">Μια στιγμή χαράς με το βραβείο του.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
-                        <img src="vale 3.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-1">Αναμνηστική φωτογραφία στο Valencia Camp, 18 Ιουλίου 2025.</p>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center cursor-pointer image-container">
+                        <img src="vale 3.jpg" class="w-full h-auto rounded-lg mb-4">
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-1">Αναμνηστική φωτογραφία στο Valencia Camp, 18 Ιουλίου 2025.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4">
-                        <div class="relative w-full overflow-hidden rounded-lg" style="padding-top: 158.6%;">
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center">
+                        <div class="relative w-full overflow-hidden rounded-lg shadow-lg" style="padding-top: 158.6%;">
                             <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fvalenciavoetbalkampbenelux%2Fposts%2F726358303653365&show_text=true" frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>
 
-                <h3 class="flex items-center text-2xl font-semibold mt-12 mb-6">
-                    <span data-lang="mestalla-title">🇪🇸 Mestalla Experience 2026</span> <img src="Valenciacf.svg.png" class="h-8 ml-2">
+                <h3 class="flex items-center text-2xl font-semibold text-gray-800 mt-12 mb-4">
+                    <span data-lang="mestalla-title">🇪🇸 Mestalla Experience 2026</span>
+                    <img src="Valenciacf.svg.png" alt="Valencia CF Logo" class="h-8 w-auto ml-2">
                 </h3>
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
-                    <p class="text-gray-600 text-lg mb-8 leading-relaxed text-center" data-lang="mestalla-text">
-                        🇪🇸⚽ Μια αξέχαστη εμπειρία για τον Φίλιππο στο Mestalla! ⚽🇪🇸 Dream Come True!<br>
-                        Η επιστροφή στη Βαλένθια τον Ιανουάριο του 2026 ήταν μια εμπειρία ζωής. Ο Φίλιππος περπάτησε στο Estadio Mestalla στον αγώνα Valencia vs Espanyol!
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-12">
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed text-center" data-lang="mestalla-text">
+                        🇪🇸⚽ Μια αξέχαστη εμπειρία για τον Φίλιππο στο Mestalla! ⚽🇪🇸 Dream Come True! <br><br>
+                        Η επιστροφή στη Βαλένθια τον Ιανουάριο του 2026 ήταν μια εμπειρία ζωής. Μετά το βραβείο "Best Talent", ο Φίλιππος επέστρεψε για προπονήσεις elite επιπέδου και περπάτησε στο χορτάρι του Estadio Mestalla στον αγώνα Valencia vs Espanyol!
                     </p>
                     <div class="relative w-full overflow-hidden rounded-lg shadow-xl mb-8" style="padding-top: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/G2q-QgNUq70" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="image-container cursor-pointer"><img src="mestalla1.jpg" class="rounded-lg shadow-md" alt="Mestalla Photo 1"></div>
-                        <div class="image-container cursor-pointer"><img src="mestalla2.jpg" class="rounded-lg shadow-md" alt="Mestalla Photo 2"></div>
-                        <div class="image-container cursor-pointer"><img src="mestalla3.jpg" class="rounded-lg shadow-md" alt="Mestalla Photo 3"></div>
-                        <div class="image-container cursor-pointer"><img src="mestalla4.jpg" class="rounded-lg shadow-md" alt="Mestalla Photo 4"></div>
+                        <div class="image-container cursor-pointer"><img src="20260124 VCF ESPANYOL p0375.jpg" class="rounded-lg shadow-md hover:opacity-80 transition"></div>
+                        <div class="image-container cursor-pointer"><img src="20260124 VCF ESPANYOL p0376.jpg" class="rounded-lg shadow-md hover:opacity-80 transition"></div>
+                        <div class="image-container cursor-pointer"><img src="20260124 VCF ESPANYOL p0379.jpg" class="rounded-lg shadow-md hover:opacity-80 transition"></div>
+                        <div class="image-container cursor-pointer"><img src="20260124 VCF ESPANYOL p0380.jpg" class="rounded-lg shadow-md hover:opacity-80 transition"></div>
                     </div>
                 </div>
 
-                <h3 class="flex items-center text-2xl font-semibold mb-6">
-                    <span data-lang="in-action-title">Φίλιππος σε δράση με την KSV Oudenaarde</span> <img src="ksvo.png" class="h-8 ml-2">
+                <h3 class="flex items-center text-2xl font-semibold text-gray-800 mt-12 mb-4">
+                    <span data-lang="in-action-title">Φίλιππος σε δράση με την KSV Oudenaarde</span>
+                    <img src="ksvo.png" alt="KSV Oudenaarde Logo" class="h-8 w-auto ml-2">
                 </h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container">
                         <img src="action.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-6">Ο Φίλιππος σε μια στιγμή δράσης κατά τη διάρκεια ενός αγώνα.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-6">Ο Φίλιππος σε μια στιγμή δράσης κατά τη διάρκεια ενός αγώνα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container">
                         <img src="withball.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-7">Ο Φίλιππος με την μπάλα σε αγώνα.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-7">Ο Φίλιππος με την μπάλα σε αγώνα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container">
                         <img src="frun.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-8">Ο Φίλιππος τρέχει με την μπάλα.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-8">Ο Φίλιππος τρέχει με την μπάλα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container">
                         <img src="dribble.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-9">Ο Φίλιππος κάνει ντρίμπλα με την μπάλα.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-9">Ο Φίλιππος κάνει ντρίμπλα με την μπάλα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container">
                         <img src="sout.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-10">Ο Φίλιππος σουτάρει την μπάλα.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-10">Ο Φίλιππος σουτάρει την μπάλα.</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container text-center">
+                    <div class="bg-white rounded-xl shadow-lg p-4 cursor-pointer image-container">
                         <img src="cele.jpg" class="w-full rounded-lg mb-2">
-                        <p class="text-sm text-gray-500" data-lang="photo-caption-3">Πανηγυρίζοντας με την ομάδα.</p>
+                        <p class="text-sm text-gray-500 image-caption" data-lang="photo-caption-3">Πανηγυρίζοντας με την ομάδα.</p>
                     </div>
                 </div>
 
-                <h3 class="text-2xl font-semibold mb-6" data-lang="video-title">Highlights Βίντεο</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-                    <div class="relative pt-56-25 overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Ftx9xwRxrXY"></iframe>
+                <h3 class="text-2xl font-semibold text-gray-800 mt-12 mb-6" data-lang="video-title">Highlights Βίντεο</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="relative overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Ftx9xwRxrXY" frameborder="0"></iframe>
                     </div>
-                    <div class="relative pt-56-25 overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/g_jtO1-LDvc"></iframe>
+                    <div class="relative overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/g_jtO1-LDvc" frameborder="0"></iframe>
                     </div>
-                    <div class="relative pt-56-25 overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/FOh1gUr79-g"></iframe>
+                    <div class="relative overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/FOh1gUr79-g" frameborder="0"></iframe>
                     </div>
-                    <div class="relative pt-56-25 overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/NU2doXw65eY"></iframe>
+                    <div class="relative overflow-hidden rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/NU2doXw65eY" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -229,10 +288,14 @@
         <div class="container mx-auto px-6">
             <h3 class="text-xl font-bold mb-6" data-lang="follow-me">Ακολουθήστε την πορεία μου</h3>
             <div class="flex justify-center space-x-10 mb-8">
-                <a href="https://www.tiktok.com/@filippos_fk7" target="_blank" class="text-4xl text-black hover:opacity-70 transition"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/channel/UCcmMbhKn3pG_dhJ0LPRW2Sg" target="_blank" class="text-4xl text-red-600 hover:opacity-70 transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@filippos_fk7" target="_blank" class="text-4xl text-black hover:opacity-60 transition">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCcmMbhKn3pG_dhJ0LPRW2Sg" target="_blank" class="text-4xl text-red-600 hover:opacity-60 transition">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
-            <p class="text-gray-500" data-lang="footer-text">© 2026 Filippos Kouretas Portfolio.</p>
+            <p class="text-gray-500">© 2026 Filippos Kouretas Portfolio.</p>
         </div>
     </footer>
 
@@ -242,12 +305,9 @@
         const translations = {
             'el': {
                 'hero-title': 'Φίλιππος Κουρέτας', 'hero-subtitle': 'Ταλέντο στο Βέλγικο Ποδόσφαιρο',
-                'mestalla-title': '🇪🇸 Εμπειρία στο Mestalla 2026', 'mestalla-text': 'Dream Come True! Η επιστροφή στη Βαλένθια τον Ιανουάριο του 2026 ήταν μια εμπειρία ζωής. Ο Φίλιππος περπάτησε στο Estadio Mestalla στον αγώνα Valencia vs Espanyol!',
-                'about-heading': 'Σχετικά με τον Φίλιππο', 'stats-heading': 'Στατιστικά & Δεξιότητες', 'media-heading': 'Φωτογραφίες & Βίντεο',
-                'about-card-1-text': 'Ο Φίλιππος ξεκίνησε 5 ετών στην KWS Desselgem.',
-                'about-card-2-text': 'Μεταγραφή στην KSV Oudenaarde U13 A.',
-                'about-card-3-text': 'Best Talent στο Valencia CF Camp (18/07/2025).',
-                'about-card-4-text': 'Επιλογή στην U12 PJO ανάμεσα σε 2.000 παιδιά.',
+                'mestalla-title': '🇪🇸 Εμπειρία στο Mestalla 2026',
+                'mestalla-text': 'Dream Come True! Η επιστροφή στη Βαλένθια τον Ιανουάριο του 2026 ήταν μια εμπειρία ζωής. Ο Φίλιππος περπάτησε στο Estadio Mestalla!',
+                'about-heading': 'Σχετικά', 'stats-heading': 'Στατιστικά', 'media-heading': 'Media',
                 'photo-caption-4': 'Ο Φίλιππος με την ομάδα της U12 Vlaamse Selectie, Απρίλιος 2025.',
                 'photo-caption-5': 'Φίλιππος με τη φανέλα της U12 Vlaamse Selectie, Απρίλιος 2025.',
                 'photo-caption-12': 'Ο Φίλιππος σε δράση με τη φανέλα της U12 Vlaamse Selectie.',
@@ -260,13 +320,12 @@
                 'photo-caption-9': 'Ο Φίλιππος κάνει ντρίμπλα με την μπάλα.',
                 'photo-caption-10': 'Ο Φίλιππος σουτάρει την μπάλα.',
                 'photo-caption-3': 'Πανηγυρίζοντας με την ομάδα.',
-                'follow-me': 'Ακολουθήστε την πορεία μου',
-                'footer-text': '© 2026 Filippos Kouretas Portfolio.'
+                'follow-me': 'Ακολουθήστε την πορεία μου'
             },
             'en': {
                 'hero-title': 'Filippos Kouretas', 'hero-subtitle': 'Rising Football Talent',
-                'mestalla-title': '🇪🇸 Mestalla Experience 2026', 'mestalla-text': 'Dream Come True! Returning to Valencia in January 2026 was the experience of a lifetime. Filippos walked onto the pitch of the iconic Estadio Mestalla!',
-                'follow-me': 'Follow my journey', 'footer-text': '© 2026 Filippos Kouretas Portfolio.'
+                'mestalla-title': '🇪🇸 Mestalla Experience 2026',
+                'follow-me': 'Follow my journey'
             }
         };
 
@@ -299,8 +358,8 @@
                 img.onclick = function() {
                     modal.style.display = "block";
                     modalImg.src = this.src;
-                    const captionText = this.nextElementSibling;
-                    if (captionText) modalCap.innerHTML = captionText.textContent;
+                    const caption = this.nextElementSibling;
+                    if (caption) modalCap.innerHTML = caption.innerHTML;
                 }
             });
             document.querySelector(".close").onclick = () => { modal.style.display = "none"; modalCap.innerHTML = ""; };
